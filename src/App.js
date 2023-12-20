@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Homepage from './Components/Homepage';
+import Cart from './Components/Cart';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import IdProvider from './Context/IdProvider';
 
 function App() {
+  // Set an initial value for the context
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <IdProvider>
+        <Routes>
+          <Route path='/' element={<Homepage />} />
+          <Route path='/cart/:index' element={<Cart />} />
+        </Routes>
+      </IdProvider>
+
+    </BrowserRouter>
   );
 }
 
